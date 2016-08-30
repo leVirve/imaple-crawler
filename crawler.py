@@ -86,10 +86,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='iMaple Crawler')
     parser.add_argument('board')
     parser.add_argument('start_id', type=int)
-    parser.add_argument('end_id' , type=int)
+    parser.add_argument('end_id', type=int)
     args = parser.parse_args()
 
-    #'nthu.course'
     imaple = IMaple('imaple.tw', args.board)
     imaple.get_posts(range(args.start_id, args.end_id))
     imaple.close()

@@ -11,6 +11,10 @@ def encode(s, suffix=''):
     return bytes(s + suffix, encoding='big5')
 
 
+def decode(s):
+    return s.decode('uao_decode', 'ignore')
+
+
 class IMaple:
 
     expects = [
@@ -70,7 +74,7 @@ class IMaple:
             self.save_post(lines, board_dir, post_id)
 
     def _update_partial_content(self):
-        content = self.client.read_very_eager().decode('uao_decode', 'ignore')
+        content = decode(self.client.read_very_eager())
         self.stream.feed(content)
 
     def save_post(self, lines, folder, post_id):
